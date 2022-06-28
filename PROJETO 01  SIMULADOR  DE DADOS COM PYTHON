@@ -1,0 +1,40 @@
+def linha():
+    print(60 * "=")
+
+
+linha()
+
+print("""
+ PROJETO 01
+ SIMULADOR  DE DADOS COM PYTHON""")
+linha()
+# Simulador de Dados
+# Simular o uso de um dado,gerando valor de 1 até 6
+
+# Importe a biblioteca que gera valores
+import random
+# Crie uma classe ou o objeto
+class SimuladorDeDados:
+    def __init__(self):#cie a classe Inicie o comportamento inicial,ini
+        self.valor_minimo = 1
+        self.valor_maximo = 6
+        self.mensagem = "Voce gostaria de girar o dado ? "
+
+    def iniciar(self):
+        resposta = input(self.mensagem)
+        try:
+
+            if resposta == "sim" or resposta == "s":
+                self.GerarValorDoDado()
+            elif resposta == "não" or resposta == "n":
+                print("Agradecemos suaparticipação")
+            else:
+                print("Por Favordigitar sim ou não ")
+        except:
+            print("Ocorreu um erro ao receber sua resposta ")
+    def GerarValorDoDado(self):
+        print(random.randint(self.valor_minimo,self.valor_maximo))
+
+
+simulador = SimuladorDeDados()
+simulador.iniciar()

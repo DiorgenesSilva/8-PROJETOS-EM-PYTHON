@@ -1,0 +1,25 @@
+#================================================================================================#
+# DESENVOLVA UM CHAT-BOOT-WHATSAPP EM PYTHON 
+# O PROGRAMA DEVE RECEBER DADOS DE CONTATOS TELEFONICOS E FAZER O ATENDIMENTO VIA AUTOMAÇÃO
+#================================================================================================#
+
+# 01 importe as Bibliotecas 
+import pywhatkit # ira possibilitar enviar mensagens 
+import keyboard  # Possiblita utilizar o teclado 
+import time # Pausa entre as mensagens 
+from datetime import datetime # Planejar o dia e hora de envio de Mensagens
+
+#-------------------------------------------------------------------------------------------------#
+# 02 DEFINIR PARA QUAIS CONTATOS IREMOS ENVIAR MSG 
+contatos = ['+5511966693414','+5511913678899']
+#-------------------------------------------------------------------------------------------------#
+
+# 03 DEFINIR INTERVALO DE ENVIO 
+while len(contatos) >= 1:
+    # ENVIAR MSG
+    pywhatkit.sendwhatmsg(contatos[0],'Ola Tudo Bem ? \n Sou o Monitor Diorgenes da Shopee Express. \n Qual seria o seu problema? \n[1] Loja estava Fechada: \n[2] Esta Mais de 2 dias sem Coleta: \n[3] Etiquetas Foram geradas após as 18 horas: \n[4] Motorista ainda Não Passou no Local: \n[5] Seller Mudou de Endereço: \n[6] Algum Problema com a Coleta ',datetime.now().hour,datetime.now().minute + 1)
+    del contatos[0]
+    time.sleep(20)
+    keyboard.press_and_release('ctrl + w') 
+
+#---------------------------------------------------------------------------------------------------#

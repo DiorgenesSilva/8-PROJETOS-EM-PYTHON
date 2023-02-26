@@ -1,0 +1,38 @@
+# iMPORTE PACOTES BIBLIOTECAS SELLENIUM E TIME
+
+from selenium import webdriver
+import time 
+
+class WhatsappBoot:
+    def __init__(self) -> None:
+        self.mensagemcliente = "Olá Tudo bem ? Sou o Monitor Diorgenes da Shopee Express na Região de RIBEIRÃO PRETO  e ARAÇATUBA. Gostaria de saber se esta com Problemas com a sua coleta ?"
+        self.gruposwt = ["Prioridades Boot","Chat Boot Teste"]
+        options = webdriver.ChromeOptions()
+        options.add_argument('lang-pt-br')
+        self.driver = webdriver.Chrome(executable_path=r'./cromedriver.exe')
+
+
+    def EnviarMensagens(self):
+        # <span dir="auto" title="Prioridades Boot" aria-label="" class="ggj6brxn gfz4du6o r7fjleex g0rxnol2 lhj4utae le5p0ye3 l7jjieqr _11JPr">Prioridades Boot</span>
+        # <div tabindex="-1" class="_3Uu1_"> 
+        # <span data-testid="send" data-icon="send" class=""> BOTÃO UDON
+        # Entrando no Grupo 
+
+        self.driver.get("https://web.whatsapp.com/")
+        time.sleep(60)
+        for grupoprioridade in self.gruposwt:
+            grupoprioridade = self.driver.find_element_by_xpath(f"//span[@title='{grupoprioridade}']")
+            time.sleep(5)
+            grupoprioridade.click()
+            chat_box = self.driver.find_element_by_class_name('_3Uu1_')
+            time.sleep(5)
+            chat_box.click
+            chat_box.send_keys(self.mensagemcliente)
+            botao_enviar = self.driver.find_element_by_xpath("//span[@data-icon='send']")
+            time.sleep(5)
+            botao_enviar.click()
+            time.sleep(3)
+
+
+boot = WhatsappBoot()
+boot.EnviarMensagens()
